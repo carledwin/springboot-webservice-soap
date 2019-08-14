@@ -1,0 +1,42 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getNoteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getNoteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="note" type="tns:note"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="document" type="xs:long"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="documentationType" type="tns:documentationType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="note">
+        <xs:sequence>
+            <xs:element name="value" type="xs:int"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="documentationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CPF"/>
+            <xs:enumeration value="CNPJ"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
